@@ -10,12 +10,16 @@ def home(request):
 
 def get_quiz(request):
     try:
-        question_objs = Question.objects.all()
+        question_objs = list(Question.objects.all())
         data = []
-        random.shuffle(list(question_obj))
+        random.shuffle(question_objs)
+        
+        print(question_objs)
+
+         
         for question_obj in question_objs:
             print(question_obj.get_answers())
-            data.append({
+            data.append({  
                 "category": question_obj.category.category_name,
                 "question": question_obj.question,
                 "marks":question_obj.marks,

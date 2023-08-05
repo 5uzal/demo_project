@@ -27,11 +27,11 @@ class Question(BaseModel):
         return self.question
     
     def get_answers(self):
-        answer_objs = list(Answer.objects.filter(Question= self))
+        answer_objs = list(Answer.objects.filter(question= self))
         random.shuffle(answer_objs)
         data = []
         
-        for answer_obj in answer_obj:
+        for answer_obj in answer_objs:
             data.append({
                 'answer':answer_obj.answer,
                 'is_correct': answer_obj.is_correct,
